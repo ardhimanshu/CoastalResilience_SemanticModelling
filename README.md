@@ -73,7 +73,7 @@ Future additions depending on project direction:
 
 ## Namespace
 
-example.org has been used here but it is to be replaced with actual domain:
+example.org has been used just for sake of URI as an identifier for the given concept:
 
 ```text
 https://example.org/coastal-resilience#
