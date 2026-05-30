@@ -1,0 +1,281 @@
+@prefix cr: <https://example.org/coastal-resilience#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://example.org/coastal-resilience> a owl:Ontology ;
+    rdfs:label "Coastal Resilience Knowledge Graph" ;
+    rdfs:comment "A starter ontology and knowledge graph for coastal resilience, Nature-based Solutions, capacity building, community engagement, and Pacific Island country implementation contexts." .
+
+#################################################################
+# Classes
+#################################################################
+
+cr:Place a owl:Class ; rdfs:label "Place" .
+cr:Region a owl:Class ; rdfs:subClassOf cr:Place ; rdfs:label "Region" .
+cr:Country a owl:Class ; rdfs:subClassOf cr:Place ; rdfs:label "Country" .
+cr:CoastalSite a owl:Class ; rdfs:subClassOf cr:Place ; rdfs:label "Coastal site" .
+cr:Ecosystem a owl:Class ; rdfs:label "Ecosystem" .
+
+cr:Actor a owl:Class ; rdfs:label "Actor" .
+cr:Organisation a owl:Class ; rdfs:subClassOf cr:Actor ; rdfs:label "Organisation" .
+cr:GovernmentOrganisation a owl:Class ; rdfs:subClassOf cr:Organisation ; rdfs:label "Government organisation" .
+cr:RegionalOrganisation a owl:Class ; rdfs:subClassOf cr:Organisation ; rdfs:label "Regional organisation" .
+cr:InternationalOrganisation a owl:Class ; rdfs:subClassOf cr:Organisation ; rdfs:label "International organisation" .
+cr:CivilSocietyOrganisation a owl:Class ; rdfs:subClassOf cr:Organisation ; rdfs:label "Civil society organisation" .
+cr:DonorOrganisation a owl:Class ; rdfs:subClassOf cr:Organisation ; rdfs:label "Donor organisation" .
+cr:Person a owl:Class ; rdfs:subClassOf cr:Actor ; rdfs:label "Person" .
+cr:CommunityStakeholder a owl:Class ; rdfs:subClassOf cr:Actor ; rdfs:label "Community stakeholder" .
+
+cr:HazardOrPressure a owl:Class ; rdfs:label "Hazard or pressure" .
+cr:ClimateHazard a owl:Class ; rdfs:subClassOf cr:HazardOrPressure ; rdfs:label "Climate hazard" .
+cr:CoastalHazard a owl:Class ; rdfs:subClassOf cr:HazardOrPressure ; rdfs:label "Coastal hazard" .
+cr:EnvironmentalPressure a owl:Class ; rdfs:subClassOf cr:HazardOrPressure ; rdfs:label "Environmental pressure" .
+
+cr:Impact a owl:Class ; rdfs:label "Impact" .
+cr:EnvironmentalImpact a owl:Class ; rdfs:subClassOf cr:Impact ; rdfs:label "Environmental impact" .
+cr:SocialImpact a owl:Class ; rdfs:subClassOf cr:Impact ; rdfs:label "Social impact" .
+cr:Risk a owl:Class ; rdfs:label "Risk" .
+
+cr:Intervention a owl:Class ; rdfs:label "Intervention" .
+cr:InterventionApproach a owl:Class ; rdfs:subClassOf cr:Intervention ; rdfs:label "Intervention approach" .
+cr:NatureBasedSolution a owl:Class ; rdfs:subClassOf cr:Intervention ; rdfs:label "Nature-based Solution" ; skos:altLabel "NbS" .
+cr:CapacityBuildingIntervention a owl:Class ; rdfs:subClassOf cr:Intervention ; rdfs:label "Capacity building intervention" .
+
+cr:Activity a owl:Class ; rdfs:label "Activity" .
+cr:TrainingExchange a owl:Class ; rdfs:subClassOf cr:Activity ; rdfs:label "Training exchange" .
+cr:CapacityNeedsAssessment a owl:Class ; rdfs:subClassOf cr:Activity ; rdfs:label "Capacity needs assessment" .
+cr:FieldVisit a owl:Class ; rdfs:subClassOf cr:Activity ; rdfs:label "Field visit" .
+cr:PlanningActivity a owl:Class ; rdfs:subClassOf cr:Activity ; rdfs:label "Planning activity" .
+cr:MonitoringActivity a owl:Class ; rdfs:subClassOf cr:Activity ; rdfs:label "Monitoring activity" .
+
+cr:Capacity a owl:Class ; rdfs:label "Capacity" .
+cr:TechnicalCapacity a owl:Class ; rdfs:subClassOf cr:Capacity ; rdfs:label "Technical capacity" .
+cr:ImplementationCapacity a owl:Class ; rdfs:subClassOf cr:Capacity ; rdfs:label "Implementation capacity" .
+cr:MonitoringCapacity a owl:Class ; rdfs:subClassOf cr:Capacity ; rdfs:label "Monitoring capacity" .
+cr:CommunityEngagementCapacity a owl:Class ; rdfs:subClassOf cr:Capacity ; rdfs:label "Community engagement capacity" .
+
+cr:KnowledgeType a owl:Class ; rdfs:label "Knowledge type" .
+cr:ScientificKnowledge a owl:Class ; rdfs:subClassOf cr:KnowledgeType ; rdfs:label "Scientific knowledge" .
+cr:LocalKnowledge a owl:Class ; rdfs:subClassOf cr:KnowledgeType ; rdfs:label "Local knowledge" .
+cr:TraditionalKnowledge a owl:Class ; rdfs:subClassOf cr:KnowledgeType ; rdfs:label "Traditional knowledge" .
+
+cr:ToolOrMethod a owl:Class ; rdfs:label "Tool or method" .
+cr:Indicator a owl:Class ; rdfs:subClassOf cr:ToolOrMethod ; rdfs:label "Indicator" .
+cr:PlanningTool a owl:Class ; rdfs:subClassOf cr:ToolOrMethod ; rdfs:label "Planning tool" .
+cr:MonitoringMethod a owl:Class ; rdfs:subClassOf cr:ToolOrMethod ; rdfs:label "Monitoring method" .
+
+cr:Outcome a owl:Class ; rdfs:label "Outcome" .
+cr:CoastalResilience a owl:Class ; rdfs:subClassOf cr:Outcome ; rdfs:label "Coastal resilience" .
+cr:BiodiversitySupport a owl:Class ; rdfs:subClassOf cr:Outcome ; rdfs:label "Biodiversity support" .
+cr:FisheriesSupport a owl:Class ; rdfs:subClassOf cr:Outcome ; rdfs:label "Fisheries support" .
+cr:CommunityWellbeing a owl:Class ; rdfs:subClassOf cr:Outcome ; rdfs:label "Community wellbeing" .
+cr:ShorelineStability a owl:Class ; rdfs:subClassOf cr:Outcome ; rdfs:label "Shoreline stability" .
+cr:EcosystemRecovery a owl:Class ; rdfs:subClassOf cr:Outcome ; rdfs:label "Ecosystem recovery" .
+
+#################################################################
+# Properties
+#################################################################
+
+cr:partOf a owl:ObjectProperty ; rdfs:label "part of" .
+cr:locatedIn a owl:ObjectProperty ; rdfs:label "located in" .
+cr:includedCountry a owl:ObjectProperty ; rdfs:label "included country" .
+cr:ledBy a owl:ObjectProperty ; rdfs:label "led by" .
+cr:deliveredBy a owl:ObjectProperty ; rdfs:label "delivered by" .
+cr:hasPartner a owl:ObjectProperty ; rdfs:label "has partner" .
+cr:supportedBy a owl:ObjectProperty ; rdfs:label "supported by" .
+cr:fundedBy a owl:ObjectProperty ; rdfs:label "funded by" .
+cr:addressesHazard a owl:ObjectProperty ; rdfs:label "addresses hazard" .
+cr:contributesTo a owl:ObjectProperty ; rdfs:label "contributes to" .
+cr:pressures a owl:ObjectProperty ; rdfs:label "pressures" .
+cr:affects a owl:ObjectProperty ; rdfs:label "affects" .
+cr:supportsOutcome a owl:ObjectProperty ; rdfs:label "supports outcome" .
+cr:requiresCapacity a owl:ObjectProperty ; rdfs:label "requires capacity" .
+cr:strengthensCapacity a owl:ObjectProperty ; rdfs:label "strengthens capacity" .
+cr:informedBy a owl:ObjectProperty ; rdfs:label "informed by" .
+cr:usesTool a owl:ObjectProperty ; rdfs:label "uses tool" .
+cr:producesOutput a owl:ObjectProperty ; rdfs:label "produces output" .
+cr:monitorsIndicator a owl:ObjectProperty ; rdfs:label "monitors indicator" .
+cr:visitedSite a owl:ObjectProperty ; rdfs:label "visited site" .
+cr:observedActivity a owl:ObjectProperty ; rdfs:label "observed activity" .
+cr:coveredTopic a owl:ObjectProperty ; rdfs:label "covered topic" .
+cr:identifiedNeed a owl:ObjectProperty ; rdfs:label "identified need" .
+cr:tailoredTo a owl:ObjectProperty ; rdfs:label "tailored to" .
+cr:focusesOn a owl:ObjectProperty ; rdfs:label "focuses on" .
+
+cr:participantCount a owl:DatatypeProperty ; rdfs:label "participant count" ; rdfs:range xsd:integer .
+cr:femaleParticipantPercentage a owl:DatatypeProperty ; rdfs:label "female participant percentage" ; rdfs:range xsd:decimal .
+cr:durationDays a owl:DatatypeProperty ; rdfs:label "duration in days" ; rdfs:range xsd:integer .
+cr:year a owl:DatatypeProperty ; rdfs:label "year" ; rdfs:range xsd:gYear .
+cr:roleTitle a owl:DatatypeProperty ; rdfs:label "role title" ; rdfs:range xsd:string .
+cr:description a owl:DatatypeProperty ; rdfs:label "description" ; rdfs:range xsd:string .
+
+#################################################################
+# Instances: Places
+#################################################################
+
+cr:Pacific a cr:Region ; rdfs:label "Pacific" .
+cr:PacificIslandCountries a cr:Region ; rdfs:label "Pacific Island countries" ; cr:partOf cr:Pacific .
+cr:Fiji a cr:Country ; rdfs:label "Fiji" ; cr:partOf cr:PacificIslandCountries .
+cr:Tonga a cr:Country ; rdfs:label "Tonga" ; cr:partOf cr:PacificIslandCountries .
+cr:Vanuatu a cr:Country ; rdfs:label "Vanuatu" ; cr:partOf cr:PacificIslandCountries .
+cr:NadiriRestorationSite a cr:CoastalSite ; rdfs:label "Nadiri coastal restoration site" ; cr:locatedIn cr:Fiji .
+
+#################################################################
+# Instances: Hazards, risks and impacts
+#################################################################
+
+cr:RisingSeas a cr:ClimateHazard ; rdfs:label "Rising seas" .
+cr:StormSurges a cr:CoastalHazard ; rdfs:label "Stronger storm surges" .
+cr:SaltwaterIntrusion a cr:EnvironmentalPressure ; rdfs:label "Saltwater intrusion" .
+cr:ShorelineErosion a cr:EnvironmentalImpact ; rdfs:label "Shoreline erosion" .
+cr:EcosystemDamage a cr:EnvironmentalImpact ; rdfs:label "Ecosystem damage" .
+cr:PressureOnCommunities a cr:SocialImpact ; rdfs:label "Pressure on coastal communities" .
+cr:CoastalRisk a cr:Risk ; rdfs:label "Coastal risk" .
+cr:CoastalCommunities a cr:CommunityStakeholder ; rdfs:label "Coastal communities" .
+
+cr:RisingSeas cr:contributesTo cr:ShorelineErosion .
+cr:StormSurges cr:contributesTo cr:CoastalRisk .
+cr:StormSurges cr:contributesTo cr:EcosystemDamage .
+cr:SaltwaterIntrusion cr:pressures cr:CoastalCommunities .
+cr:ShorelineErosion cr:affects cr:CoastalCommunities .
+
+#################################################################
+# Instances: Interventions and outcomes
+#################################################################
+
+cr:NatureBasedSolutions a cr:InterventionApproach ;
+    rdfs:label "Nature-based Solutions" ;
+    skos:altLabel "NbS" .
+
+cr:MangroveRestoration a cr:NatureBasedSolution ;
+    rdfs:label "Mangrove restoration" ;
+    cr:addressesHazard cr:CoastalRisk ;
+    cr:supportsOutcome cr:BiodiversitySupportOutcome, cr:FisheriesSupportOutcome, cr:CommunityWellbeingOutcome, cr:ShorelineStabilityOutcome .
+
+cr:CoralReefRehabilitation a cr:NatureBasedSolution ;
+    rdfs:label "Coral reef rehabilitation" ;
+    cr:addressesHazard cr:CoastalRisk ;
+    cr:supportsOutcome cr:BiodiversitySupportOutcome, cr:EcosystemRecoveryOutcome .
+
+cr:MangrovePlanting a cr:Intervention ; rdfs:label "Mangrove planting" .
+cr:CoralRestoration a cr:Intervention ; rdfs:label "Coral restoration" .
+
+cr:BiodiversitySupportOutcome a cr:BiodiversitySupport ; rdfs:label "Biodiversity support" .
+cr:FisheriesSupportOutcome a cr:FisheriesSupport ; rdfs:label "Fisheries support" .
+cr:CommunityWellbeingOutcome a cr:CommunityWellbeing ; rdfs:label "Community wellbeing" .
+cr:ShorelineStabilityOutcome a cr:ShorelineStability ; rdfs:label "Shoreline stability" .
+cr:EcosystemRecoveryOutcome a cr:EcosystemRecovery ; rdfs:label "Ecosystem recovery" .
+cr:CoastalResilienceOutcome a cr:CoastalResilience ; rdfs:label "Coastal resilience" .
+
+#################################################################
+# Instances: Organisations and people
+#################################################################
+
+cr:SPC a cr:RegionalOrganisation ; rdfs:label "Pacific Community" ; skos:altLabel "SPC" .
+cr:SPREP a cr:RegionalOrganisation ; rdfs:label "Secretariat of the Pacific Regional Environment Programme" ; skos:altLabel "SPREP" .
+cr:IUCN a cr:InternationalOrganisation ; rdfs:label "International Union for Conservation of Nature" ; skos:altLabel "IUCN" .
+cr:GGGI a cr:InternationalOrganisation ; rdfs:label "Global Green Growth Institute" ; skos:altLabel "GGGI" .
+cr:NewZealandMFAT a cr:DonorOrganisation ; rdfs:label "New Zealand Ministry of Foreign Affairs and Trade" .
+cr:FijiMinistryEnvironmentClimateChange a cr:GovernmentOrganisation ; rdfs:label "Fiji Ministry of Environment and Climate Change" .
+cr:FijiMinistryForestry a cr:GovernmentOrganisation ; rdfs:label "Fiji Ministry of Forestry" .
+cr:TongaMinistryForestry a cr:GovernmentOrganisation ; rdfs:label "Tonga Ministry of Forestry" .
+cr:TongaDepartmentEnvironment a cr:GovernmentOrganisation ; rdfs:label "Tonga Department of Environment" .
+cr:VanuatuDepartmentForestry a cr:GovernmentOrganisation ; rdfs:label "Vanuatu Department of Forestry" .
+cr:LiveAndLearnEnvironmentalEducation a cr:CivilSocietyOrganisation ; rdfs:label "Live and Learn Environmental Education" .
+cr:ConservationInternational a cr:CivilSocietyOrganisation ; rdfs:label "Conservation International" .
+cr:ITaukeiWomenInConservation a cr:CivilSocietyOrganisation ; rdfs:label "iTaukei Women in Conservation" .
+
+cr:DrRakeshniLata a cr:Person ;
+    rdfs:label "Dr Rakeshni Lata" ;
+    cr:roleTitle "Training and Capacity Building Officer for Nature-based Solutions, SPC Climate Change and Sustainability Division" .
+
+cr:MsSeiniVailolaFifita a cr:Person ;
+    rdfs:label "Ms Seini Vailola Fifita" ;
+    cr:roleTitle "Food Systems Officer, Live and Learn Tonga" .
+
+cr:CustomaryLandowners a cr:CommunityStakeholder ; rdfs:label "Customary landowners" .
+cr:LocalPractitioners a cr:CommunityStakeholder ; rdfs:label "Local practitioners" .
+cr:CommunityGroups a cr:CommunityStakeholder ; rdfs:label "Community groups" .
+
+#################################################################
+# Instances: Programme, initiative, training and assessment
+#################################################################
+
+cr:PPINProgramme a cr:CapacityBuildingIntervention ;
+    rdfs:label "Promoting Pacific Islands Nature-based Solutions programme" ;
+    skos:altLabel "PPIN" .
+
+cr:RECCAInitiative a cr:CapacityBuildingIntervention ;
+    rdfs:label "RECCA initiative" ;
+    cr:supportedBy cr:NewZealandMFAT .
+
+cr:RegionalCapacityNeedsAssessment2024 a cr:CapacityNeedsAssessment ;
+    rdfs:label "Regional capacity needs assessment 2024" ;
+    cr:ledBy cr:SPC ;
+    cr:year "2024"^^xsd:gYear ;
+    cr:identifiedNeed cr:AppliedTrainingForNbS .
+
+cr:AppliedTrainingForNbS a cr:Capacity ;
+    rdfs:label "Applied training for Nature-based Solutions" ;
+    cr:focusesOn cr:PracticalImplementation ;
+    cr:tailoredTo cr:PacificIslandCountries .
+
+cr:ResilientShoresResilientCommunities a cr:TrainingExchange ;
+    rdfs:label "Resilient Shores, Resilient Communities" ;
+    cr:deliveredBy cr:SPC ;
+    cr:hasPartner cr:IUCN, cr:SPREP, cr:GGGI ;
+    cr:supportedBy cr:RECCAInitiative ;
+    cr:durationDays 3 ;
+    cr:participantCount 35 ;
+    cr:femaleParticipantPercentage 51.0 ;
+    cr:includedCountry cr:Fiji, cr:Tonga, cr:Vanuatu ;
+    cr:strengthensCapacity cr:TechnicalCapacityForNbS, cr:ImplementationCapacityForNbS, cr:MonitoringCapacityForNbS, cr:CommunityEngagementCapacityForNbS ;
+    cr:coveredTopic cr:MangroveSpeciesSelection, cr:SiteSuitabilityAssessment, cr:TidalFlow, cr:SedimentDynamics, cr:EcosystemInteractions, cr:LandUseAssessment, cr:EcosystemMonitoringMethods, cr:CommunityEngagement .
+
+cr:TrainingExchangeFieldVisit a cr:FieldVisit ;
+    rdfs:label "Field visit to Nadiri restoration site" ;
+    cr:visitedSite cr:NadiriRestorationSite ;
+    cr:observedActivity cr:MangrovePlanting, cr:CoralRestoration .
+
+cr:SiteSpecificActionPlans a cr:PlanningTool ;
+    rdfs:label "Site-specific action plans" ;
+    cr:tailoredTo cr:Fiji, cr:Tonga, cr:Vanuatu .
+
+cr:ResilientShoresResilientCommunities cr:producesOutput cr:SiteSpecificActionPlans .
+
+#################################################################
+# Instances: Capacities, knowledge, tools and indicators
+#################################################################
+
+cr:TechnicalCapacityForNbS a cr:TechnicalCapacity ; rdfs:label "Technical capacity for NbS" .
+cr:ImplementationCapacityForNbS a cr:ImplementationCapacity ; rdfs:label "Implementation capacity for NbS" .
+cr:MonitoringCapacityForNbS a cr:MonitoringCapacity ; rdfs:label "Monitoring capacity for NbS" .
+cr:CommunityEngagementCapacityForNbS a cr:CommunityEngagementCapacity ; rdfs:label "Community engagement capacity for NbS" .
+
+cr:Science a cr:ScientificKnowledge ; rdfs:label "Science" .
+cr:LocalKnowledgeInstance a cr:LocalKnowledge ; rdfs:label "Local knowledge" .
+cr:TraditionalKnowledgeInstance a cr:TraditionalKnowledge ; rdfs:label "Traditional knowledge" .
+
+cr:MangroveSpeciesSelection a cr:ToolOrMethod ; rdfs:label "Mangrove species selection" .
+cr:SiteSuitabilityAssessment a cr:PlanningTool ;
+    rdfs:label "Site suitability assessment" ;
+    cr:informedBy cr:TidalFlow, cr:SedimentDynamics, cr:EcosystemInteractions, cr:LocalKnowledgeInstance, cr:TraditionalKnowledgeInstance, cr:Science .
+
+cr:TidalFlow a cr:EnvironmentalPressure ; rdfs:label "Tidal flow" .
+cr:SedimentDynamics a cr:EnvironmentalPressure ; rdfs:label "Sediment dynamics" .
+cr:EcosystemInteractions a cr:Ecosystem ; rdfs:label "Ecosystem interactions" .
+cr:LandUseAssessment a cr:PlanningTool ; rdfs:label "Land-use assessment" .
+cr:EcosystemMonitoringMethods a cr:MonitoringMethod ; rdfs:label "Ecosystem monitoring methods" .
+cr:CommunityEngagement a cr:ToolOrMethod ;
+    rdfs:label "Community engagement" ;
+    cr:informedBy cr:CustomaryLandowners, cr:TraditionalKnowledgeInstance, cr:LocalKnowledgeInstance .
+
+cr:ShorelineStabilityIndicator a cr:Indicator ; rdfs:label "Shoreline stability indicator" .
+cr:EcosystemRecoveryIndicator a cr:Indicator ; rdfs:label "Ecosystem recovery indicator" .
+cr:EcosystemMonitoringMethods cr:monitorsIndicator cr:ShorelineStabilityIndicator, cr:EcosystemRecoveryIndicator .
+
+cr:MangroveRestoration cr:requiresCapacity cr:TechnicalCapacityForNbS, cr:ImplementationCapacityForNbS, cr:CommunityEngagementCapacityForNbS, cr:MonitoringCapacityForNbS .
+cr:CoralReefRehabilitation cr:requiresCapacity cr:TechnicalCapacityForNbS, cr:ImplementationCapacityForNbS, cr:MonitoringCapacityForNbS .
