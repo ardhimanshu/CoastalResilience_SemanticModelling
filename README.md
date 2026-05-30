@@ -51,21 +51,6 @@ This means:
 Mangrove restoration -> addresses hazard -> coastal risk
 ```
 
-## Suggested tools
-
-### For ontology editing
-
-Use **Protégé** to open `coastal_resilience_ontology.owl`.
-
-### For RDF storage and querying
-
-Use one of:
-
-- GraphDB Free
-- Apache Jena Fuseki
-- RDF4J
-
-
 ## Future for this knowledge graph depending on project direction
 
 Future additions depending on project direction:
