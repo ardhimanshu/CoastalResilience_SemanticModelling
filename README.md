@@ -1,8 +1,6 @@
-# CoastalResilience_SemanticModelling
-Work on semantic knowledge graph for coastal resilence
-# Coastal Resilience Knowledge Graph
+# Coastal Resilience Semantic Knowledge Graph modelling
 
-This project is a first step at modelling coastal resilience across Pacific Island countries, using the example text on Fiji, Tonga, Vanuatu, Nature-based Solutions, SPC-led capacity building, community engagement, monitoring, and restoration practice.
+Work on semantic knowledge graph for coastal resilence. This project is a first step at modelling coastal resilience across Pacific Island countries, using the example text on Fiji, Tonga, Vanuatu, Nature-based Solutions, SPC-led capacity building, community engagement, monitoring, and restoration practice.
 
 ## Files
 
